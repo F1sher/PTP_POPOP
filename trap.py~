@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def get_data(filename):
+    with open(filename, "r") as f:
+        raw_data = f.read()
+
+    data = []
+    for d in raw_data.split(" "):
+        try:
+            data.append(int(d))
+        except ValueError:
+            print("d = {}".format(d))
+
+    return data
+
+
+if __name__ == "__main__":
+    data_ch_0_0 = get_data("143318_ch_0_2_clr.txt")
+
+    plt.plot(np.arange(len(data_ch_0_0)), data_ch_0_0, "o-")
+    plt.show()
